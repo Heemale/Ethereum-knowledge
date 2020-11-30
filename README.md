@@ -1,6 +1,4 @@
-
-# 1.创建以太坊本地POW私链
-
+## 1.搭建本地以太坊pow私有链
 
 ##### ps：使用puppeth工具
 
@@ -202,3 +200,66 @@ at block: 32 (Mon Nov 30 2020 20:56:00 GMT+0800 (CST))
 245000000000000000000
 ```
 
+
+
+ps：目录结构图
+
+> D:\Test-8545\private>tree /f
+> 卷 DATA 的文件夹 PATH 列表
+> 卷序列号为 2805-0DA1
+> D:.
+> │  chainskills-aleth.json
+> │  chainskills-harmony.json
+> │  chainskills-parity.json
+> │  chainskills.json
+> │  password.sec
+> │  startnode.cmd
+> │  start_geth_attach.bat
+> │
+> ├─.puppeth
+> │      chainskills
+> │
+> ├─geth
+> │  │  LOCK
+> │  │  nodekey
+> │  │  transactions.rlp
+> │  │
+> │  ├─chaindata
+> │  │  │  000002.ldb
+> │  │  │  000003.log
+> │  │  │  CURRENT
+> │  │  │  CURRENT.bak
+> │  │  │  LOCK
+> │  │  │  LOG
+> │  │  │  MANIFEST-000004
+> │  │  │
+> │  │  └─ancient
+> │  │          bodies.0000.cdat
+> │  │          bodies.cidx
+> │  │          diffs.0000.rdat
+> │  │          diffs.ridx
+> │  │          FLOCK
+> │  │          hashes.0000.rdat
+> │  │          hashes.ridx
+> │  │          headers.0000.cdat
+> │  │          headers.cidx
+> │  │          receipts.0000.cdat
+> │  │          receipts.cidx
+> │  │
+> │  ├─lightchaindata
+> │  │      000001.log
+> │  │      CURRENT
+> │  │      LOCK
+> │  │      LOG
+> │  │      MANIFEST-000000
+> │  │
+> │  └─nodes
+> │          000001.log
+> │          CURRENT
+> │          LOCK
+> │          LOG
+> │          MANIFEST-000000
+> │
+> └─keystore
+>         UTC--2020-11-30T12-52-20.321058300Z--aa6cd61c58f679b6db9ee432925ae06ca6798001
+>         UTC--2020-11-30T12-52-41.496669200Z--1bb8d4f0f2bcf86b24a035f88ff12c557c5a83c9
