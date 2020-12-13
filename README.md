@@ -153,7 +153,7 @@ Path of the secret key file: keystore\UTC--2020-11-30T12-52-41.496669200Z--1bb8d
 ##### ps：文件start_geth_attach.bat 挖矿命令
 
 ```
-geth --networkid 4224 --mine --minerthreads 3 --datadir "." --nodiscover --http --http.port "8545" --ws --ws.port "8546" --port "30303" --http.corsdomain "*" --nat "any" --http.api eth,web3,personal,net --allow-insecure-unlock --unlock 0 --password ./password.sec
+geth --networkid 1234 --mine --miner.threads 3 --syncmode full --datadir "." --nodiscover --http --http.port "8555" --ws --ws.port "8546" --port "30303" --http.corsdomain "*" --nat "any" --http.api eth,web3,personal,net --allow-insecure-unlock --unlock 0,1,2 --password ./password.sec
 ```
 
 ##### ps：文件startnode.cmd 进入geth控制台
