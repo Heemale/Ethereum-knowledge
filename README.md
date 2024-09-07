@@ -1,11 +1,8 @@
-## 1.搭建本地以太坊pow私有链
+## 搭建本地以太坊pow私有链
 
-##### ps：使用puppeth工具
-
-```
+使用puppeth工具
+```bash
 D:\Test-8545\private>puppeth
-```
-
 +-----------------------------------------------------------+
 | Welcome to puppeth, your Ethereum private network manager |
 |                                                           |
@@ -25,9 +22,10 @@ Sweet, you can set this via --network=chainskills next time!
 
 [32mINFO [0m[11-30|20:47:15.850] Administering Ethereum network           [32mname[0m=chainskills
 [33mWARN [0m[11-30|20:47:16.164] No previous configurations found         [33mpath[0m=.puppeth\chainskills
+```
 
-##### ps：配置生成创世纪文件chainskills.json
-
+配置生成创世纪文件chainskills.json
+```bash
 What would you like to do? (default = stats)
 
  1. Show network stats
@@ -40,9 +38,10 @@ What would you like to do? (default = create)
  1. Create new genesis from scratch
  2. Import already existing genesis
 > 1
+```
 
-##### ps：选择pow或者poa机制
-
+选择共识机制
+```bash
 Which consensus engine to use? (default = clique)
  1. Ethash - proof-of-work
  2. Clique - proof-of-authority
@@ -53,9 +52,10 @@ Which accounts should be pre-funded? (advisable at least one)
 
 Should the precompile-addresses (0x1 .. 0xff) be pre-funded with 1 wei? (advisable yes)
 >
+```
 
-##### ps：set the chainID
-
+设置chainID
+```bash
 Specify your chain/network ID if you want an explicit one (default = random)
 
 > 4224
@@ -67,9 +67,10 @@ What would you like to do? (default = stats)
  3. Track new remote server
  4. Deploy network components
 > 2
+```
 
-##### ps：导出创世纪文件
-
+导出创世纪文件
+```bash
  1. Modify existing configurations
  2. Export genesis configurations
  3. Remove genesis configuration
@@ -82,22 +83,19 @@ Which folder to save the genesis specs into? (default = current)
 >[32mINFO [0m[11-30|20:48:34.257] Saved genesis chain spec                 [32mclient[0m=parity [32mpath[0m=chainskills-parity.json
 >[32mINFO [0m[11-30|20:48:34.263] Saved genesis chain spec                 [32mclient[0m=harmony [32mpath[0m=chainskills-harmony.json
 
-> ##### 回车
-
 What would you like to do? (default = stats)
  1. Show network stats
  2. Manage existing genesis
  3. Track new remote server
  4. Deploy network components
-
-> ##### ^c
-
-##### ps:初始化创世纪文件
-
+ 
+^c
 ```
+
+初始化创世纪文件
+
+```bash
 D:\Test-8545\private>geth --datadir . init chainskills.json
-```
-
 INFO [11-30|20:50:18.800] Maximum peer count                       ETH=50 LES=0 total=50
 INFO [11-30|20:50:18.870] Set global gas cap                       cap=25000000
 INFO [11-30|20:50:18.874] Allocated cache and file handles         database=D:\Test-8545\private\geth\chaindata cache=16.00MiB handles=16
@@ -108,14 +106,11 @@ INFO [11-30|20:50:19.325] Allocated cache and file handles         database=D:\T
 INFO [11-30|20:50:19.413] Writing custom genesis block
 INFO [11-30|20:50:19.418] Persisted trie from memory database      nodes=354 size=50.23KiB time=1.0101ms gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
 INFO [11-30|20:50:19.434] Successfully wrote genesis state         database=lightchaindata                           hash="be770e…95d9c2"
-
-##### ps:创建两个账户
-
 ```
+
+创建两个账户
+```bash
 D:\Test-8545\private>geth --datadir . account new
-```
-
-
 INFO [11-30|20:52:13.236] Maximum peer count                       ETH=50 LES=0 total=50
 Your new account is locked with a password. Please give a password. Do not forget this password.
 Password:
@@ -131,10 +126,7 @@ Path of the secret key file: keystore\UTC--2020-11-30T12-52-20.321058300Z--aa6cd
 - You must BACKUP your key file! Without the key, it's impossible to access account funds!
 - You must REMEMBER your password! Without the password, it's impossible to decrypt the key!
 
-```
 D:\Test-8545\private>geth --datadir . account new
-```
-
 INFO [11-30|20:52:34.483] Maximum peer count                       ETH=50 LES=0 total=50
 Your new account is locked with a password. Please give a password. Do not forget this password.
 Password:
@@ -149,30 +141,25 @@ Path of the secret key file: keystore\UTC--2020-11-30T12-52-41.496669200Z--1bb8d
 - You must NEVER share the secret key with anyone! The key controls access to your funds!
 - You must BACKUP your key file! Without the key, it's impossible to access account funds!
 - You must REMEMBER your password! Without the password, it's impossible to decrypt the key!
-
-##### ps：文件start_geth_attach.bat 挖矿命令
-
 ```
+
+挖矿命令：写入start_geth_attach.bat文件
+```shell
 geth --networkid 4224 --mine --miner.threads 3 --syncmode full --datadir "." --nodiscover --http --http.port "8545" --ws --ws.port "8546" --port "30303" --http.corsdomain "*" --nat "any" --http.api eth,web3,personal,net --allow-insecure-unlock --unlock 0,1,2 --password ./password.sec
 ```
 
-##### ps：文件startnode.cmd 进入geth控制台
-
-```
+进入geth控制台命令：写入startnode.cmd文件
+```shell
 geth attach ipc:\\.\pipe\geth.ipc
 ```
 
-##### ps：文件passwod.sec储存账户密码
-
-```
+账户密码：写入password.sec文件
+```text
 your password
 ```
 
-
-
-##### geth控制台部分命令：
-
-```
+geth控制台部分命令：
+```bash
 D:\Test-8545\private>geth attach ipc:\\.\pipe\geth.ipc
 Welcome to the Geth JavaScript console!
 
@@ -200,11 +187,8 @@ at block: 32 (Mon Nov 30 2020 20:56:00 GMT+0800 (CST))
 245000000000000000000
 ```
 
-
-
-ps：目录结构图
-
-> ```
+目录结构图
+> ```bash
 > D:\Test-8545\private>tree /f
 > 卷 DATA 的文件夹 PATH 列表
 > 卷序列号为 2805-0DA1
